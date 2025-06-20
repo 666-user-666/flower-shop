@@ -1,0 +1,24 @@
+services:
+     - type: web
+       name: flower-shop
+       env: node
+       buildCommand: npm install && npm run build
+       startCommand: npm run start
+       envVars:
+         - key: NODE_VERSION
+           value: "20"
+       domains:
+         - flower-shop.onrender.com # Замените на ваш домен
+
+     - type: web
+       name: flower-bot
+       env: node
+       buildCommand: cd bot && npm install
+       startCommand: cd bot && node bot.cjs
+       envVars:
+         - key: NODE_VERSION
+           value: "20"
+         - key: BOT_TOKEN
+           value: "***REMOVED***" # Замените на секрет в Render
+       regions:
+         - frankfurt # Выберите регион ближе к вам
