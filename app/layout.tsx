@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Цветочный магазин",
     description: "Свежие цветы с доставкой. Закажите через Telegram!",
-    url: "https://your-site.onrender.com", // Замените на домен Render после деплоя
+    url: "https://flower-shop-gu5o.onrender.com",
     images: ["/images/flower1.jpg"],
   },
-  metadataBase: new URL("http://localhost:3000"), // Для разработки
+  metadataBase: new URL("https://flower-shop-gu5o.onrender.com"),
 };
 
 export default function RootLayout({
@@ -26,11 +26,11 @@ export default function RootLayout({
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-between items-center">
               <h1 className="text-2xl font-bold text-pink-600">Цветочный рай</h1>
-              <div className="space-x-4">
-                <a href="#catalog" className="text-pink-600 hover:text-pink-800">Каталог</a>
-                <a href="#about" className="text-pink-600 hover:text-pink-800">О нас</a>
-                <a href="#reviews" className="text-pink-600 hover:text-pink-800">Отзывы</a>
-                <a href="#contact" className="text-pink-600 hover:text-pink-800">Контакты</a>
+              <div className="space-x-4 sm:space-x-4 xs:space-x-2">
+                <a href="#catalog" className="text-pink-600 hover:text-pink-800 whitespace-nowrap">Каталог</a>
+                <a href="#about" className="text-pink-600 hover:text-pink-800 whitespace-nowrap">О нас</a>
+                <a href="#reviews" className="text-pink-600 hover:text-pink-800 whitespace-nowrap">Отзывы</a>
+                <a href="#contact" className="text-pink-600 hover:text-pink-800 whitespace-nowrap">Контакты</a>
               </div>
             </div>
           </nav>
