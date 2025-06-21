@@ -1,7 +1,7 @@
-// bot.cjs
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
-const token = process.env.BOT_TOKEN || '8152128612:AAGC5EQJuahP_8ICDfQavtgAQWv6FDgBfQc';
+const token = process.env.BOT_TOKEN;
+if (!token) throw new Error('BOT_TOKEN is not set');
 const bot = new TelegramBot(token, { polling: true });
 
 // Хранилище состояний пользователей
@@ -60,7 +60,7 @@ bot.on('message', (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text;
 
-  if (text === '/start') return; // Игнорируем /start
+  if (text === '/start') return;
 
   if (userStates[chatId]?.step === 'quantity') {
     const quantity = parseInt(text, 10);
@@ -87,9 +87,8 @@ bot.on('message', (msg) => {
     bot.sendMessage(chatId, 'Укажите ваш номер телефона:');
   } else if (userStates[chatId]?.step === 'phone') {
     const order = { ...userStates[chatId].order, phone: text };
-    delete userStates[chatId]; // Очищаем состояние
+    delete userStates[chatId];
 
-    // Формируем сообщение о заказе
     const totalPrice =
       order.type === 'bouquet'
         ? parseInt(order.item.match(/\d+/)[0], 10)
@@ -104,10 +103,8 @@ bot.on('message', (msg) => {
       Телефон: ${order.phone}
     `;
 
-    // Отправляем подтверждение пользователю
     bot.sendMessage(chatId, `Ваш заказ отправлен менеджеру!\n${orderMessage}\nМы свяжемся с вами скоро!`);
     console.log(`Заказ от ${chatId}:\n${orderMessage}`);
-
   } else {
     bot.sendMessage(chatId, 'Пожалуйста, начните с команды /start');
   }
