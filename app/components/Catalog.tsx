@@ -28,7 +28,7 @@ export default function Catalog() {
                 <h3 className="text-lg font-semibold text-gray-800">{flower.name}</h3>
                 <p className="text-pink-600 font-bold">{flower.price}</p>
                 <a
-                  href="https://t.me/flowerShopLanding_bot"
+                  href="https://t.me/FlOwErSHopLaNding_bot"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-block bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-700"

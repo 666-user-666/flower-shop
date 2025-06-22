@@ -9,7 +9,7 @@ export default function Hero() {
           Закажите букеты с доставкой через нашего Telegram-бота!
         </p>
         <a
-          href="https://t.me/flowerShopLanding_bot"
+          href="https://t.me/FlOwErSHopLaNding_bot"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-pink-600 text-white py-3 px-6 rounded-lg hover:bg-pink-700 transition"
