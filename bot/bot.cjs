@@ -1,19 +1,8 @@
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
-const http = require('http');
-
 const token = process.env.BOT_TOKEN;
 if (!token) throw new Error('BOT_TOKEN is not set');
 const bot = new TelegramBot(token, { polling: true });
-
-// Минимальный HTTP-сервер для Render
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Bot is running');
-});
-server.listen(process.env.PORT || 3000, () => {
-  console.log(`HTTP server running on port ${process.env.PORT || 3000}`);
-});
 
 // Хранилище состояний пользователей
 const userStates = {};
@@ -115,8 +104,7 @@ bot.on('message', (msg) => {
     `;
 
     bot.sendMessage(chatId, `Ваш заказ отправлен менеджеру!\n${orderMessage}\nМы свяжемся с вами скоро!`);
-    // Безопасное логирование без чувствительных данных
-    console.log(`Заказ от ${chatId}: Товар: ${order.item}, Сумма: ${totalPrice} ₽`);
+    
   } else {
     bot.sendMessage(chatId, 'Пожалуйста, начните с команды /start');
   }
