@@ -104,7 +104,7 @@ bot.on('message', (msg) => {
     `;
 
     bot.sendMessage(chatId, `Ваш заказ отправлен менеджеру!\n${orderMessage}\nМы свяжемся с вами скоро!`);
-    console.log(`Заказ от ${chatId}:\n${orderMessage}`);
+    
   } else {
     bot.sendMessage(chatId, 'Пожалуйста, начните с команды /start');
   }
